@@ -1,0 +1,452 @@
+:root {
+  
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #070b16;
+  color: #e9edf5;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, rgba(108, 122, 255, 0.12), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(90, 255, 205, 0.08), transparent 28%),
+    #070b16;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.15rem;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+input {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: #f5f8ff;
+  padding: 0.85rem 1rem;
+  outline: none;
+}
+
+input::placeholder {
+  color: rgba(233, 237, 245, 0.5);
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) 1fr;
+  min-height: 100vh;
+  gap: 1.5rem;
+  padding: 1.75rem;
+}
+
+.sidebar,
+main {
+  width: 100%;
+}
+
+.sidebar {
+  position: sticky;
+  top: 1.75rem;
+  align-self: start;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 3.25rem);
+  letter-spacing: -0.05em;
+}
+
+.brand p {
+  margin: 0.75rem 0 1.5rem;
+  color: rgba(233, 237, 245, 0.7);
+}
+
+.role-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.role-toggle button {
+  background: rgba(255, 255, 255, 0.08);
+  color: #d6dbf7;
+}
+
+.role-toggle button.active {
+  background: #5c6bff;
+  color: #fff;
+}
+
+.card,
+.sidebar section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.highlight {
+  background: linear-gradient(180deg, rgba(50, 93, 255, 0.18), rgba(22, 28, 47, 0.92));
+  border-color: rgba(92, 107, 255, 0.35);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  margin: 1rem 0;
+  width: max-content;
+}
+
+.status.active {
+  background: rgba(84, 255, 189, 0.16);
+  color: #8cf7d9;
+}
+
+.status.idle {
+  background: rgba(255, 124, 124, 0.12);
+  color: #ff9da5;
+}
+
+.stat-block {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 1rem;
+}
+
+.stat-block small {
+  display: block;
+  margin-top: 0.5rem;
+  color: rgba(233, 237, 245, 0.7);
+}
+
+.stat-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+
+.stat-grid div {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-grid strong {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.mini-list,
+.leaderboard,
+.task-list,
+.lock-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mini-list li,
+.task-list li,
+.lock-card,
+.leaderboard li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mini-list li:last-child,
+.task-list li:last-child,
+.leaderboard li:last-child,
+.lock-card:last-child {
+  border-bottom: none;
+}
+
+.mini-list span,
+.task-list small,
+.lock-card p,
+.leaderboard span {
+  color: rgba(233, 237, 245, 0.7);
+}
+
+.task-list li {
+  align-items: center;
+}
+
+.task-list li.done strong {
+  text-decoration: line-through;
+  color: rgba(233, 237, 245, 0.7);
+}
+
+.task-list li button,
+.mini-list button,
+.chat-input button,
+.new-task button {
+  min-width: 96px;
+}
+
+.new-task,
+.friend-search {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.new-task {
+  grid-template-columns: 1fr;
+}
+
+.lock-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.lock-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.lock-card label {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: rgba(233, 237, 245, 0.8);
+}
+
+.leaderboard {
+  margin-top: 1rem;
+}
+
+.leaderboard li {
+  padding: 0.9rem 0;
+}
+
+.leaderboard li.you {
+  color: #7ad7ff;
+}
+
+.chat-box {
+  display: grid;
+  gap: 0.8rem;
+  max-height: 320px;
+  overflow: auto;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.chat-message {
+  max-width: 85%;
+  padding: 0.85rem 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.chat-message.friend {
+  align-self: flex-start;
+  background: rgba(92, 107, 255, 0.16);
+}
+
+.chat-message.child {
+  align-self: flex-end;
+  background: rgba(37, 255, 191, 0.15);
+}
+
+.chat-message small {
+  color: rgba(233, 237, 245, 0.65);
+}
+
+.chat-input {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+}
+
+.inline-blocks {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+.inline-blocks span {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+}
+
+.caption {
+  margin: 0.85rem 0 0;
+  color: rgba(233, 237, 245, 0.7);
+}
+
+.reward-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+
+.reward-grid div {
+  padding: 1rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
+.reward-grid strong {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+button.primary,
+button {
+  background: #5c6bff;
+  color: white;
+}
+
+button.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #d6dbf7;
+}
+
+auth-shell,
+.auth-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.auth-card {
+  width: min(540px, 100%);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.18);
+}
+
+.auth-card h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.auth-card p {
+  margin: 0 0 1.5rem;
+  color: rgba(233, 237, 245, 0.72);
+}
+
+.auth-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.auth-toggle button {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #d6dbf7;
+  padding: 0.85rem 1rem;
+}
+
+.auth-toggle button.active {
+  background: #5c6bff;
+  color: white;
+}
+
+.auth-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-form label,
+.role-fieldset {
+  display: grid;
+  gap: 0.5rem;
+  color: #e9edf5;
+}
+
+.role-fieldset {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.role-fieldset legend {
+  padding: 0 0.5rem;
+  color: #fff;
+}
+
+.role-fieldset label {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.auth-message {
+  margin-top: 0.75rem;
+  color: #d6dbf7;
+}
+
+@media (max-width: 1024px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .panel.grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
